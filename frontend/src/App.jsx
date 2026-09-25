@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldAlert, Globe, Activity, HardDrive, AlertTriangle, ShieldCheck, Cpu, Wifi } from 'lucide-react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, AreaChart, Area } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, AreaChart, Area, Cell } from 'recharts';
 
 function App() {
   const [summary, setSummary] = useState({ total_packets: 0, speed_kbps: 0, active_devices: 0, top_ips: [] });
@@ -109,7 +109,7 @@ function App() {
           {/* Traffic History Area Chart */}
           <div className="bg-slate-900/40 backdrop-blur-md border border-slate-700/50 p-6 rounded-2xl shadow-xl">
             <h2 className="text-lg font-semibold text-slate-200 mb-6 flex items-center">
-              <ActivitySquare className="w-5 h-5 mr-2 text-cyan-400" /> Live Bandwidth Usage
+              <Activity className="w-5 h-5 mr-2 text-cyan-400" /> Live Bandwidth Usage
             </h2>
             <div className="h-48 w-full">
               <ResponsiveContainer>
@@ -141,7 +141,7 @@ function App() {
                   <Tooltip cursor={{fill: '#1e293b'}} contentStyle={{backgroundColor: '#0f172a', borderColor: '#1e293b', borderRadius: '0.75rem'}} />
                   <Bar dataKey="bytes" fill="#3b82f6" radius={[0, 4, 4, 0]}>
                     {summary.top_ips.map((entry, index) => (
-                      <cell key={`cell-${index}`} fill={index === 0 ? '#0ea5e9' : '#3b82f6'} />
+                      <Cell key={`cell-${index}`} fill={index === 0 ? '#0ea5e9' : '#3b82f6'} />
                     ))}
                   </Bar>
                 </BarChart>
